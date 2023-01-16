@@ -13,6 +13,6 @@ public class EnemyScript : NonPlayerCharacter
     // Update is called once per frame
     void Update()
     {
-
+        GetMove();
     }
 }
