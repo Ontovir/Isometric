@@ -41,7 +41,9 @@ public class PlayerController : MonoBehaviour
         playerRigidbody2DComponent.MovePosition
             (playerRigidbody2DComponent.position + playerMoveInput * playerSpeed * Time.deltaTime); 
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    //Этот код с корутиной отвечает за переход на другую сцену.
+    /* private void OnTriggerEnter2D(Collider2D collision)
     {
         GetComponent<PlayerController>().enabled = false;
         StartCoroutine(LoadNextScene());
@@ -53,4 +55,5 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerController>().enabled = true;
         StopCoroutine(LoadNextScene());
     }
+    */
 }   
