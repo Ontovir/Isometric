@@ -22575,7 +22575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   spawningPoint: {fileID: 660034734}
-  npcMoveSpeed: 20
+  npcMoveSpeed: 5
   autoMove: 1
 --- !u!1 &1476055763
 GameObject:

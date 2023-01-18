@@ -8,11 +8,22 @@ public class EnemyScript : NonPlayerCharacter
     void Start()
     {
         StartCoordinates();
+        StartCoroutine(StartMove());
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetMove();
+
     }
+
+    IEnumerator StartMove()
+    {
+        while (1 > 0)
+        {
+            GetMove();
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
 }
