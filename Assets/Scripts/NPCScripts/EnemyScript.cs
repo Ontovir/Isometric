@@ -22,7 +22,8 @@ public class EnemyScript : NonPlayerCharacter
         while (1 > 0)
         {
             GetRandomCoordinates();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
+            StopNPCAnimation();
         }
     }
 

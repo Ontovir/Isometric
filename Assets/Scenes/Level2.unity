@@ -10684,23 +10684,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4449477130173746711, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: m_Size.x
-      value: 0.1852992
+      value: 0.24635494
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130173746711, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: m_Size.y
-      value: 0.2511283
+      value: 0.26052153
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130173746711, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: m_Offset.x
-      value: 0.019999823
+      value: 0.017651662
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130173746711, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: m_Offset.y
-      value: 0.046913885
+      value: 0.051610466
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130538096940, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: playerSpeed
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130538096941, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: m_RootOrder
@@ -22575,8 +22575,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   spawningPoint: {fileID: 660034734}
-  npcMoveSpeed: 5
-  autoMove: 1
+  npcMoveSpeed: 1.2
+--- !u!95 &1052398916
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052398905}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0616e852249b67947bd430368bbb7235, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1476055763
 GameObject:
   m_ObjectHideFlags: 0
@@ -32647,6 +32666,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4204184476626080356, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204184476626080356, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204184476626080356, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6830910641780329771, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
       propertyPath: m_Mass
       value: 1
