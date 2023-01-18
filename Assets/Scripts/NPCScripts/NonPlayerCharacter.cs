@@ -29,12 +29,16 @@ public abstract class NonPlayerCharacter : MonoBehaviour
         Vector2 moveVector = new Vector2(xStartPosition + xRandom, yStartPosition + yRandom);
         transform.position = Vector2.MoveTowards(transform.position, moveVector, moveSpeed);
     } */
-   public void GetMove()
+   public void GetRandomCoordinates()
     {
-        float moveSpeed = npcMoveSpeed * Time.deltaTime;
         xRandom = Random.Range(-1f, 1f);
         yRandom = Random.Range(-1f, 1f);
-        Vector2 moveVector = new Vector2(xStartPosition + xRandom, yStartPosition + yRandom);
-        GetComponent<Rigidbody2D>().transform.position = moveVector;
+    }
+
+    public void Movement()
+    {
+        float moveSpeed = npcMoveSpeed * Time.deltaTime;
+        Vector3 moveVector = new Vector3(xStartPosition + xRandom, yStartPosition + yRandom, 0f);
+        GetComponent<Rigidbody2D>().transform.position = Vector3.MoveTowards(transform.position, moveVector, moveSpeed);
     }
 }

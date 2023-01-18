@@ -14,14 +14,14 @@ public class EnemyScript : NonPlayerCharacter
     // Update is called once per frame
     void Update()
     {
-
+        Movement();
     }
 
     IEnumerator StartMove()
     {
         while (1 > 0)
         {
-            GetMove();
+            GetRandomCoordinates();
             yield return new WaitForSeconds(1f);
         }
     }
