@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //Этот код с корутиной отвечает за переход на другую сцену.
+    //Здесь я его закомментировал, т.к. он не используется в текущей игровой сцене
     /* private void OnTriggerEnter2D(Collider2D collision)
     {
         GetComponent<PlayerController>().enabled = false;
