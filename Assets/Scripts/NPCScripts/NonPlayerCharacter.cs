@@ -9,7 +9,7 @@ public abstract class NonPlayerCharacter : MonoBehaviour
     //Spawning point является игровым объектом и привязывается к NPC в Unity
 
     [Header("NPC Main parameters")]
-    [SerializeField] private float healthPoints = 100f;
+
     [SerializeField] GameObject spawningPoint;
 
     //Здесь пока что назначаю скорость, с которой передвигается NPC
@@ -132,4 +132,5 @@ public abstract class NonPlayerCharacter : MonoBehaviour
         npcAnimation.SetBool("IsADown", false);
         npcAnimation.SetBool("IsDDown", false);
     }
+
 }

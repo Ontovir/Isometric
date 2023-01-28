@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float attack;
+    [SerializeField] int playerHealth = 100;
     [SerializeField] GameObject attackAnimation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,29 @@ public class PlayerAttack : MonoBehaviour
                 (attackAnimation, transform.position-corrVec, Quaternion.identity) as GameObject;
             Destroy(attack, 0.3f);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Enemy")
+        {
+            DamageDealerScript damageDealer =
+                other.gameObject.GetComponent<DamageDealerScript>();
+            if (!damageDealer) { return; }
+            PlayerDeath(damageDealer);
+        }
+    }
+
+    private void PlayerDeath(DamageDealerScript damageDealer)
+    {
+        playerHealth -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (playerHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Destroy(gameObject, 2f);
     }
 }

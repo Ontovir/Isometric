@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyScript : NonPlayerCharacter
 {
-
+    [SerializeField] private int enemyHealth = 100;
+    [SerializeField] GameObject enemyAttackAnimation;
+    [SerializeField] float attackCounter = 1f;
+    private bool isAlive = true;
     // Метод Start загружает метод StartCoordinates из абстрактного класса NonPlayerCharacter
     // и начинает корутину StartMove
 
@@ -22,6 +25,7 @@ public class EnemyScript : NonPlayerCharacter
     void Update()
     {
         Movement();
+        AttackCountdown();
     }
 
 
@@ -37,5 +41,45 @@ public class EnemyScript : NonPlayerCharacter
             StopNPCAnimation();
         }
     }
+    private void EnemyAttackAnimation()
+    {
+                Vector3 corrVec = new Vector3(0.1f, 0.1f, 0f);
+                GameObject attack = Instantiate
+                    (enemyAttackAnimation, transform.position - corrVec, Quaternion.identity) as GameObject;
+                Destroy(attack, 0.3f);
+    }
+    private void AttackCountdown()
+    {
+        attackCounter -= Time.deltaTime;
+        if (attackCounter <= 0f)
+        {
+            EnemyAttackAnimation();
+            attackCounter = Random.Range(0.1f, 1f);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            DamageDealerScript damageDealer =
+                other.gameObject.GetComponent<DamageDealerScript>();
+            if (!damageDealer) { return; }
+            EnemyDeath(damageDealer);
+        }
+    }
 
+    private void EnemyDeath(DamageDealerScript damageDealer)
+    {
+        enemyHealth -= damageDealer.GetDamage();
+        damageDealer.Hit();
+        if (enemyHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        isAlive = false;
+        Destroy(gameObject, 1f);
+    }
 }

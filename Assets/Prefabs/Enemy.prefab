@@ -157,6 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f957adbfcc335428273bb7e9073136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 100
+  enemyHealth: 200
   spawningPoint: {fileID: 0}
   npcMoveSpeed: 1.2

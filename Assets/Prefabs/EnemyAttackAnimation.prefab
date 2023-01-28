@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1298403891851208031}
   - component: {fileID: 1956880}
-  - component: {fileID: -816361693926435449}
+  - component: {fileID: -4142361806253345514}
   m_Layer: 0
-  m_Name: AttackAnimation
-  m_TagString: Player
+  m_Name: EnemyAttackAnimation
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,10 +47,10 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21527815, y: 0.09486771}
-  m_Size: {x: 0.55108166, y: 0.55108166}
+  m_Offset: {x: 0.378366, y: 0.09486771}
+  m_Size: {x: 0.87725735, y: 0.87725735}
   m_Direction: 0
---- !u!114 &-816361693926435449
+--- !u!114 &-4142361806253345514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82dc58f67f66978489d85f601f71212c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 150
 --- !u!1 &5300898430892694624
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.06132078, b: 0.06132078, a: 1}
+      maxColor: {r: 0.7208394, g: 0.062745094, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
