@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScript : NonPlayerCharacter
 {
     [SerializeField] private int enemyHealth = 100;
     [SerializeField] GameObject enemyAttackAnimation;
     [SerializeField] float attackCounter = 1f;
+    [SerializeField] GameObject enemyHealthBar;
+    private GameObject enemyHealthBarInit;
+    private bool enemyHealthBarActive = false;
     private bool isAlive = true;
     // Метод Start загружает метод StartCoordinates из абстрактного класса NonPlayerCharacter
     // и начинает корутину StartMove
@@ -14,8 +18,24 @@ public class EnemyScript : NonPlayerCharacter
     // Start is called before the first frame update
     void Start()
     {
+        //EnemyHealthBarInit();
         StartCoordinates();
         StartCoroutine(StartMove());
+    }
+    private void EnemyHealthBarInit()
+    {
+        Vector3 corrVec = new Vector3(0.1f, 0.1f, 0f);
+        enemyHealthBarInit = Instantiate
+            (enemyHealthBar, transform.position - corrVec, Quaternion.identity) as GameObject;
+        enemyHealthBarInit.GetComponent<Slider>().maxValue = enemyHealth;
+        enemyHealthBarActive = true;
+    }
+    private void EnemyHealthBarUpdate()
+    {
+        if (enemyHealthBarActive)
+        {
+            enemyHealthBarInit.GetComponent<Slider>().value = enemyHealth;
+        }
     }
 
     // В методе Update загружается метод Movement из класса NonPlayerCharacter
@@ -24,6 +44,7 @@ public class EnemyScript : NonPlayerCharacter
     // Update is called once per frame
     void Update()
     {
+        //EnemyHealthBarUpdate();
         Movement();
         AttackCountdown();
     }
@@ -34,11 +55,14 @@ public class EnemyScript : NonPlayerCharacter
     // Корутина циклична, каждые 0.5f секунд появляются новые координаты и NPC движется к ним.
     IEnumerator StartMove()
     {
-        while (1 > 0)
+        if (isAlive)
         {
-            GetRandomCoordinates();
-            yield return new WaitForSeconds(0.5f);
-            StopNPCAnimation();
+            while (1 > 0)
+            {
+                GetRandomCoordinates();
+                yield return new WaitForSeconds(0.5f);
+                StopNPCAnimation();
+            }
         }
     }
     private void EnemyAttackAnimation()
@@ -80,6 +104,8 @@ public class EnemyScript : NonPlayerCharacter
     private void Die()
     {
         isAlive = false;
+        enemyHealthBarActive = false;
+        Destroy(enemyHealthBar, 1f);
         Destroy(gameObject, 1f);
     }
 }

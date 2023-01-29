@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: tableRoundItemsChairs_E
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 3275eab75e0047d4da65ab6004a3a3af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 564114fd0f1cb4a4083e0d895ec93b9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

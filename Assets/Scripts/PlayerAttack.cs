@@ -1,22 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] int playerHealth = 100;
     [SerializeField] GameObject attackAnimation;
+    [SerializeField] GameObject healthBarSlider;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerMaxHealthInitialize();
     }
 
+    private void PlayerHealthUpdate()
+    {
+        healthBarSlider.GetComponent<Slider>().value = playerHealth;
+    }
+    private void PlayerMaxHealthInitialize()
+    {
+        healthBarSlider.GetComponent<Slider>().maxValue = playerHealth;
+        healthBarSlider.GetComponent<Slider>().value = playerHealth;
+    }
     // Update is called once per frame
     void Update()
     {
         PlayerAttackAnimation();
+        PlayerHealthUpdate();
     }
     private void PlayerAttackAnimation()
     {
@@ -50,6 +62,7 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Die()
     {
+        GetComponent<PlayerController>().enabled = false;
         Destroy(gameObject, 2f);
     }
 }
