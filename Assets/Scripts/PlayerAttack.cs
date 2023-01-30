@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] int playerHealth = 100;
     [SerializeField] GameObject attackAnimation;
     [SerializeField] GameObject healthBarSlider;
+    [SerializeField] TextMeshProUGUI enemyAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,7 @@ public class PlayerAttack : MonoBehaviour
             DamageDealerScript damageDealer =
                 other.gameObject.GetComponent<DamageDealerScript>();
             if (!damageDealer) { return; }
+            enemyAttack.text += "-" + damageDealer.GetDamage().ToString() + ", ";
             PlayerDeath(damageDealer);
         }
     }
@@ -63,6 +66,15 @@ public class PlayerAttack : MonoBehaviour
     private void Die()
     {
         GetComponent<PlayerController>().enabled = false;
+        StartCoroutine(textCleanCoroutine());
         Destroy(gameObject, 2f);
+
+    }
+    IEnumerator textCleanCoroutine()
+    {
+        enemyAttack.text = "DIED";
+        yield return new WaitForSeconds(2f);
+        enemyAttack.text = "";
+        StopCoroutine(textCleanCoroutine());
     }
 }

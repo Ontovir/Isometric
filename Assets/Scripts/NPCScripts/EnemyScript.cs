@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+using TMPro;
 
 public class EnemyScript : NonPlayerCharacter
 {
-    [SerializeField] private int enemyHealth = 100;
+    [SerializeField] public int enemyHealth = 100;
     [SerializeField] GameObject enemyAttackAnimation;
     [SerializeField] float attackCounter = 1f;
-    [SerializeField] GameObject enemyHealthBar;
-    private GameObject enemyHealthBarInit;
-    private bool enemyHealthBarActive = false;
+    [SerializeField] TextMeshProUGUI playerAttack;
+
     private bool isAlive = true;
     // Метод Start загружает метод StartCoordinates из абстрактного класса NonPlayerCharacter
     // и начинает корутину StartMove
@@ -18,33 +18,20 @@ public class EnemyScript : NonPlayerCharacter
     // Start is called before the first frame update
     void Start()
     {
-        //EnemyHealthBarInit();
         StartCoordinates();
         StartCoroutine(StartMove());
     }
-    private void EnemyHealthBarInit()
-    {
-        Vector3 corrVec = new Vector3(0.1f, 0.1f, 0f);
-        enemyHealthBarInit = Instantiate
-            (enemyHealthBar, transform.position - corrVec, Quaternion.identity) as GameObject;
-        enemyHealthBarInit.GetComponent<Slider>().maxValue = enemyHealth;
-        enemyHealthBarActive = true;
-    }
-    private void EnemyHealthBarUpdate()
-    {
-        if (enemyHealthBarActive)
-        {
-            enemyHealthBarInit.GetComponent<Slider>().value = enemyHealth;
-        }
-    }
 
+    public int EnemyHealth()
+    {
+        return enemyHealth;
+    }
     // В методе Update загружается метод Movement из класса NonPlayerCharacter
     // Метод Movement отвечает за плавное движение NPC к новым координатам
 
     // Update is called once per frame
     void Update()
     {
-        //EnemyHealthBarUpdate();
         Movement();
         AttackCountdown();
     }
@@ -67,10 +54,10 @@ public class EnemyScript : NonPlayerCharacter
     }
     private void EnemyAttackAnimation()
     {
-                Vector3 corrVec = new Vector3(0.1f, 0.1f, 0f);
-                GameObject attack = Instantiate
-                    (enemyAttackAnimation, transform.position - corrVec, Quaternion.identity) as GameObject;
-                Destroy(attack, 0.3f);
+        Vector3 corrVec = new Vector3(0.1f, 0.1f, 0f);
+        GameObject attack = Instantiate
+            (enemyAttackAnimation, transform.position - corrVec, Quaternion.identity) as GameObject;
+        Destroy(attack, 0.3f);
     }
     private void AttackCountdown()
     {
@@ -88,6 +75,7 @@ public class EnemyScript : NonPlayerCharacter
             DamageDealerScript damageDealer =
                 other.gameObject.GetComponent<DamageDealerScript>();
             if (!damageDealer) { return; }
+            playerAttack.text += "-" + damageDealer.GetDamage().ToString() + ", ";
             EnemyDeath(damageDealer);
         }
     }
@@ -104,8 +92,15 @@ public class EnemyScript : NonPlayerCharacter
     private void Die()
     {
         isAlive = false;
-        enemyHealthBarActive = false;
-        Destroy(enemyHealthBar, 1f);
+        StartCoroutine(textCleanCoroutine());
         Destroy(gameObject, 1f);
+
+    }
+    IEnumerator textCleanCoroutine()
+    {
+        playerAttack.text = "DIED";
+        yield return new WaitForSeconds(2f);
+        playerAttack.text = "";
+        StopCoroutine(textCleanCoroutine());
     }
 }

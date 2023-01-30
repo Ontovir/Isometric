@@ -126,7 +126,7 @@ public abstract class NonPlayerCharacter : MonoBehaviour
         npcAnimation.SetBool("IsAWDown", false);
         npcAnimation.SetBool("IsWDown", false);
         npcAnimation.SetBool("IsSDown", false);
-        npcAnimation.SetBool("IsASown", false);
+        npcAnimation.SetBool("IsASDown", false);
         npcAnimation.SetBool("IsWDown", false);
         npcAnimation.SetBool("IsSDown", false);
         npcAnimation.SetBool("IsADown", false);
