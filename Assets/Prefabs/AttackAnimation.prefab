@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1298403891851208031}
   - component: {fileID: 1956880}
   - component: {fileID: -816361693926435449}
-  - component: {fileID: 3681220576625642818}
   m_Layer: 0
   m_Name: AttackAnimation
   m_TagString: Player
@@ -64,18 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 50
---- !u!114 &3681220576625642818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2753509855677015047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4000de0ff02d2d4289f2410583aec58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5300898430892694624
 GameObject:
   m_ObjectHideFlags: 0

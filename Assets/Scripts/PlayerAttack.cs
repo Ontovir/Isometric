@@ -38,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Vector3 corrVec = new Vector3 (0.1f, 0.1f, 0f);
             GameObject attack = Instantiate
-                (attackAnimation, transform.position-corrVec, Quaternion.identity) as GameObject;
+                (attackAnimation, transform.position-corrVec, Quaternion.identity);
             Destroy(attack, 0.3f);
         }
     }
@@ -50,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
                 other.gameObject.GetComponent<DamageDealerScript>();
             if (!damageDealer) { return; }
             enemyAttack.text += "-" + damageDealer.GetDamage().ToString() + ", ";
+            StartCoroutine(textCleanCoroutine());
             PlayerDeath(damageDealer);
         }
     }
@@ -66,13 +67,12 @@ public class PlayerAttack : MonoBehaviour
     private void Die()
     {
         GetComponent<PlayerController>().enabled = false;
+        enemyAttack.text = "DIED";
         StartCoroutine(textCleanCoroutine());
-        Destroy(gameObject, 2f);
-
+        Destroy(gameObject, 1f);
     }
     IEnumerator textCleanCoroutine()
     {
-        enemyAttack.text = "DIED";
         yield return new WaitForSeconds(2f);
         enemyAttack.text = "";
         StopCoroutine(textCleanCoroutine());

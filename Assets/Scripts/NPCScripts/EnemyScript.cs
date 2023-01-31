@@ -6,7 +6,7 @@ using TMPro;
 
 public class EnemyScript : NonPlayerCharacter
 {
-    [SerializeField] public int enemyHealth = 100;
+    [SerializeField] public int enemyHealth;
     [SerializeField] GameObject enemyAttackAnimation;
     [SerializeField] float attackCounter = 1f;
     [SerializeField] TextMeshProUGUI playerAttack;
@@ -76,7 +76,9 @@ public class EnemyScript : NonPlayerCharacter
                 other.gameObject.GetComponent<DamageDealerScript>();
             if (!damageDealer) { return; }
             playerAttack.text += "-" + damageDealer.GetDamage().ToString() + ", ";
+            StartCoroutine(textCleanCoroutine());
             EnemyDeath(damageDealer);
+            
         }
     }
 
@@ -92,14 +94,14 @@ public class EnemyScript : NonPlayerCharacter
     private void Die()
     {
         isAlive = false;
+        playerAttack.text = "DIED";
         StartCoroutine(textCleanCoroutine());
         Destroy(gameObject, 1f);
 
     }
     IEnumerator textCleanCoroutine()
     {
-        playerAttack.text = "DIED";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         playerAttack.text = "";
         StopCoroutine(textCleanCoroutine());
     }
