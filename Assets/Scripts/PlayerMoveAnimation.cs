@@ -52,6 +52,7 @@ public class PlayerMoveAnimation : MonoBehaviour
         IfSDAttack();
         IfASAttack();
         IfAWAttack();
+        Invoke("AttackAnimationOff", 0.1f);
     }
 
     // ћетоды ниже определ€ют, какие клавиши управлени€ нажаты
@@ -231,5 +232,17 @@ public class PlayerMoveAnimation : MonoBehaviour
             //playerAnimator.Play("AttackW");
         }
         else playerAnimator.SetBool("AttackW", false);
+    }
+
+    private void AttackAnimationOff()
+    {
+        playerAnimator.SetBool("AttackWD", false);
+        playerAnimator.SetBool("AttackW", false);
+        playerAnimator.SetBool("AttackSD", false);
+        playerAnimator.SetBool("AttackD", false);
+        playerAnimator.SetBool("AttackAS", false);
+        playerAnimator.SetBool("AttackS", false);
+        playerAnimator.SetBool("AttackAW", false);
+        playerAnimator.SetBool("AttackA", false);
     }
 }
