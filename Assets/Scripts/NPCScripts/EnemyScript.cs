@@ -12,6 +12,7 @@ public class EnemyScript : NonPlayerCharacter
     [SerializeField] TextMeshProUGUI playerAttack;
 
     private bool isAlive = true;
+    private bool isAttackOn;
     // Метод Start загружает метод StartCoordinates из абстрактного класса NonPlayerCharacter
     // и начинает корутину StartMove
 
@@ -52,20 +53,27 @@ public class EnemyScript : NonPlayerCharacter
             }
         }
     }
+
     private void EnemyAttackAnimation()
     {
+        isAttackOn = true;
         Vector3 corrVec = new Vector3(0.1f, 0.1f, 0f);
         GameObject attack = Instantiate
             (enemyAttackAnimation, transform.position - corrVec, Quaternion.identity) as GameObject;
         Destroy(attack, 0.3f);
+        Invoke("AttackOff", 0.3f);
     }
+
     private void AttackCountdown()
     {
         attackCounter -= Time.deltaTime;
         if (attackCounter <= 0f)
         {
             EnemyAttackAnimation();
+            npcAttackAnimation();
             attackCounter = Random.Range(0.1f, 1f);
+            Invoke("AttackOff", 0.3f);
+            Invoke("npcAttackAnimationSetOff", 0.3f);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -78,10 +86,16 @@ public class EnemyScript : NonPlayerCharacter
             playerAttack.text += "-" + damageDealer.GetDamage().ToString() + ", ";
             StartCoroutine(textCleanCoroutine());
             EnemyDeath(damageDealer);
-            
         }
     }
-
+    private void AttackOff()
+    {
+        isAttackOn = false;
+    }
+    public bool IsAttackOn()
+    {
+        return isAttackOn;
+    }
     private void EnemyDeath(DamageDealerScript damageDealer)
     {
         enemyHealth -= damageDealer.GetDamage();
@@ -104,5 +118,59 @@ public class EnemyScript : NonPlayerCharacter
         yield return new WaitForSeconds(1f);
         playerAttack.text = "";
         StopCoroutine(textCleanCoroutine());
+    }
+    private void npcAttackAnimation()
+    {
+        if (IsAttackOn() && npcAnimation.GetBool("IsWDown"))
+        {
+            //npcAnimation.SetBool("AttackW", true);
+            npcAnimation.Play("AttackW");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsDDown"))
+        {
+            //npcAnimation.SetBool("AttackD", true);
+            npcAnimation.Play("AttackD");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsSDown"))
+        {
+            //npcAnimation.SetBool("AttackS", true);
+            npcAnimation.Play("AttackS");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsADown"))
+        {
+            //npcAnimation.SetBool("AttackA", true);
+            npcAnimation.Play("AttackA");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsWDDown"))
+        {
+            //npcAnimation.SetBool("AttackWD", true);
+            npcAnimation.Play("AttackWD");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsSDDown"))
+        {
+            //npcAnimation.SetBool("AttackSD", true);
+            npcAnimation.Play("AttackSD");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsASDown"))
+        {
+            //npcAnimation.SetBool("AttackAS", true);
+            npcAnimation.Play("AttackAS");
+        }
+        if (IsAttackOn() && npcAnimation.GetBool("IsAWDown"))
+        {
+            //npcAnimation.SetBool("AttackAW", true);
+            npcAnimation.Play("AttackAW");
+        }
+    }
+    private void npcAttackAnimationSetOff()
+    {
+            npcAnimation.SetBool("AttackW", false);
+            npcAnimation.SetBool("AttackD", false);
+            npcAnimation.SetBool("AttackS", false);
+            npcAnimation.SetBool("AttackA", false);
+            npcAnimation.SetBool("AttackWD", false);
+            npcAnimation.SetBool("AttackSD", false);
+            npcAnimation.SetBool("AttackAS", false);
+            npcAnimation.SetBool("AttackAW", false);
     }
 }

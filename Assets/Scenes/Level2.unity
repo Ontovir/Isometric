@@ -11775,7 +11775,11 @@ PrefabInstance:
     - target: {fileID: 1052398911, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
       propertyPath: spawningPoint
       value: 
-      objectReference: {fileID: 660034734}
+      objectReference: {fileID: 1369144175}
+    - target: {fileID: 1052398916, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0616e852249b67947bd430368bbb7235, type: 2}
     - target: {fileID: 4204184476626080356, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
       propertyPath: m_Size.x
       value: 0.2
@@ -11831,6 +11835,10 @@ PrefabInstance:
     - target: {fileID: 6830910641780329774, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830910641780329774, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
@@ -21765,7 +21773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369144175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.15, y: 12.27, z: 0}
+  m_LocalPosition: {x: 13.15, y: 11.778, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32099,6 +32107,10 @@ PrefabInstance:
       propertyPath: spawningPoint
       value: 
       objectReference: {fileID: 660034734}
+    - target: {fileID: 1052398916, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0616e852249b67947bd430368bbb7235, type: 2}
     - target: {fileID: 4204184476626080356, guid: f63d6b9608d37f843a800728dd9172a5, type: 3}
       propertyPath: m_Size.x
       value: 0.2

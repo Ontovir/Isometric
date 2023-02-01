@@ -8,10 +8,11 @@ public class PlayerMoveAnimation : MonoBehaviour
 {
     // Создаю переменную класса Animator
     private Animator playerAnimator;
-
+    private PlayerAttack knowAttackStatus;
     // Присваиваю переменной значение
     void Start()
     {
+        knowAttackStatus = GetComponent<PlayerAttack>();
         playerAnimator = GetComponent<Animator>();
     }
 
@@ -23,6 +24,7 @@ public class PlayerMoveAnimation : MonoBehaviour
     void Update()
     {
         MovementUpdate();
+        AttackUpdate();
     }
 
 
@@ -38,6 +40,18 @@ public class PlayerMoveAnimation : MonoBehaviour
         IfSDDown();
         IfASDown();
         IfAWDown();
+    }
+
+    private void AttackUpdate()
+    {
+        IfDAttack();
+        IfSAttack();
+        IfAAttack();
+        IfWAttack();
+        IfWDAttack();
+        IfSDAttack();
+        IfASAttack();
+        IfAWAttack();
     }
 
     // Методы ниже определяют, какие клавиши управления нажаты
@@ -142,5 +156,80 @@ public class PlayerMoveAnimation : MonoBehaviour
         {
             playerAnimator.SetBool("IsAWDown", false);
         }
+    }
+
+
+    //Attack Animation
+    private void IfWDAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackWD", true);
+            //playerAnimator.Play("AttackWD");
+        }
+        else playerAnimator.SetBool("AttackWD", false);
+    }
+    private void IfDAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackD", true);
+            //playerAnimator.Play("AttackD");
+        }
+        else playerAnimator.SetBool("AttackD", false);
+    }
+    private void IfSDAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackSD", true);
+            //playerAnimator.Play("AttackSD");
+        }
+        else playerAnimator.SetBool("AttackSD", false);
+    }
+    private void IfSAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackS", true);
+            //playerAnimator.Play("AttackS");
+        }
+        else playerAnimator.SetBool("AttackS", false);
+    }
+    private void IfASAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackAS", true);
+            //playerAnimator.Play("AttackAS");
+        }
+        else playerAnimator.SetBool("AttackAS", false);
+    }
+    private void IfAAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackA", true);
+            //playerAnimator.Play("AttackA");
+        }
+        else playerAnimator.SetBool("AttackA", false);
+    }
+    private void IfAWAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackAW", true);
+            //playerAnimator.Play("AttackAW");
+        }
+        else playerAnimator.SetBool("AttackAW", false);
+    }
+    private void IfWAttack()
+    {
+        if (knowAttackStatus.IsAttackOn())
+        {
+            playerAnimator.SetBool("AttackW", true);
+            //playerAnimator.Play("AttackW");
+        }
+        else playerAnimator.SetBool("AttackW", false);
     }
 }

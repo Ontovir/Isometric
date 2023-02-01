@@ -135,7 +135,7 @@ Animator:
   m_GameObject: {fileID: 6830910641780329774}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0616e852249b67947bd430368bbb7235, type: 2}
+  m_Controller: {fileID: 9100000, guid: f1d40e91f5db66544808aa2bacec6018, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawningPoint: {fileID: 0}
   npcMoveSpeed: 1.2
+  npcAnimation: {fileID: 0}
   enemyHealth: 200
   enemyAttackAnimation: {fileID: 2753509855677015047, guid: 241b5843a94428346aa2c1cad9154499, type: 3}
   attackCounter: 0

@@ -32,7 +32,7 @@ public abstract class NonPlayerCharacter : MonoBehaviour
 
     //Эта переменная (npcAnimator) нужна для анимации движения NPC
 
-    private Animator npcAnimation;
+    public Animator npcAnimation;
 
     //Метод StartCoordinates определяет значения для переменных (координаты стартовой позиции)
     //и запускает метод поиска компонента Animator у NPC. 
@@ -54,10 +54,9 @@ public abstract class NonPlayerCharacter : MonoBehaviour
     //Он также запускает метод анимации движения NPC npcMovementAnimation
     public void GetRandomCoordinates()
     {
-        xMoveRandom = Random.Range(-1f, 1f);
-        yMoveRandom = Random.Range(-1f, 1f);
+        xMoveRandom = Random.Range(-1, 2);
+        yMoveRandom = Random.Range(-1, 2);
         npcMovementAnimation();
-
     }
 
 
@@ -111,15 +110,13 @@ public abstract class NonPlayerCharacter : MonoBehaviour
         if (xMoveRandom == 0 && yMoveRandom > 0)
         {
             npcAnimation.SetBool("IsWDown", true);
+
         }
         if (xMoveRandom == 0 && yMoveRandom < 0)
         {
             npcAnimation.SetBool("IsSDown", true);
         }
-
-
     }
-
     // открытый метод StopNPCAnimation останавливает анимацию движения NPC и включает Idle анимацию
     public void StopNPCAnimation()
     {

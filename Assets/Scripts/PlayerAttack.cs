@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject attackAnimation;
     [SerializeField] GameObject healthBarSlider;
     [SerializeField] TextMeshProUGUI enemyAttack;
+    private bool isAttackOn;
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +37,22 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            isAttackOn = true;
             Vector3 corrVec = new Vector3 (0.1f, 0.1f, 0f);
             GameObject attack = Instantiate
                 (attackAnimation, transform.position-corrVec, Quaternion.identity);
             Destroy(attack, 0.3f);
+            Invoke("AttackOff", 1f);
         }
+    }
+    private void AttackOff()
+    {
+        isAttackOn = false;
+    }
+
+    public bool IsAttackOn()
+    {
+        return isAttackOn;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
