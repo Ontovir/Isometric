@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
             GameObject attack = Instantiate
                 (attackAnimation, transform.position-corrVec, Quaternion.identity);
             Destroy(attack, 0.3f);
-            Invoke("AttackOff", 1f);
+            Invoke("AttackOff", 0.2f);
         }
     }
     private void AttackOff()

@@ -40,6 +40,7 @@ public class PlayerMoveAnimation : MonoBehaviour
         IfSDDown();
         IfASDown();
         IfAWDown();
+        Invoke("AttackAnimationOff", 0.1f);
     }
 
     private void AttackUpdate()
@@ -53,7 +54,7 @@ public class PlayerMoveAnimation : MonoBehaviour
         IfASAttack();
         IfAWAttack();
         Invoke("AttackAnimationOff", 0.1f);
-    }
+    } 
 
     // Методы ниже определяют, какие клавиши управления нажаты
     // В зависимости от этого, они вызывают переменные bool из аниматора
@@ -64,6 +65,10 @@ public class PlayerMoveAnimation : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             playerAnimator.SetBool("IsWDown", true);
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackW");
+            }
         }
         else
         {
@@ -76,7 +81,10 @@ public class PlayerMoveAnimation : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             playerAnimator.SetBool("IsDDown", true);
-
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackD");
+            }
         }
         else
         {
@@ -88,6 +96,10 @@ public class PlayerMoveAnimation : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             playerAnimator.SetBool("IsSDown", true);
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackS");
+            }
         }
         else
         {
@@ -99,6 +111,10 @@ public class PlayerMoveAnimation : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             playerAnimator.SetBool("IsADown", true);
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackA");
+            }
         }
         else
         {
@@ -112,7 +128,10 @@ public class PlayerMoveAnimation : MonoBehaviour
             playerAnimator.SetBool("IsDDown", false);
             playerAnimator.SetBool("IsWDown", false); 
             playerAnimator.SetBool("IsWDDown", true);
-            
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackWD");
+            }
         }
         else
         {
@@ -126,6 +145,10 @@ public class PlayerMoveAnimation : MonoBehaviour
             playerAnimator.SetBool("IsSDown", false);
             playerAnimator.SetBool("IsDDown", false);
             playerAnimator.SetBool("IsSDDown", true);
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackSD");
+            }
         }
         else
         {
@@ -139,6 +162,10 @@ public class PlayerMoveAnimation : MonoBehaviour
             playerAnimator.SetBool("IsADown", false);
             playerAnimator.SetBool("IsSDown", false);
             playerAnimator.SetBool("IsASDown", true);
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackAS");
+            }
         }
         else
         {
@@ -152,6 +179,10 @@ public class PlayerMoveAnimation : MonoBehaviour
             playerAnimator.SetBool("IsADown", false);
             playerAnimator.SetBool("IsWDown", false);
             playerAnimator.SetBool("IsAWDown", true);
+            if (knowAttackStatus.IsAttackOn())
+            {
+                playerAnimator.Play("AttackAW");
+            }
         }
         else
         {
