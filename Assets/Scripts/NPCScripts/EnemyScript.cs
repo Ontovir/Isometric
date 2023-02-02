@@ -6,13 +6,19 @@ using TMPro;
 
 public class EnemyScript : NonPlayerCharacter
 {
+    // В SerializeField происходит назначение уровня здоровья врага, привязывается префаб анимации его атаки
+    // AttackCounter нужен для случайного вызова атаки врага во времени
+    // Привязка к textMeshPro нужна для отображения наносимого игроку урона
     [SerializeField] public int enemyHealth;
     [SerializeField] GameObject enemyAttackAnimation;
     [SerializeField] float attackCounter = 1f;
     [SerializeField] TextMeshProUGUI playerAttack;
 
+    // Булевы переменные показывают статус врага. Жив он и атакует ли на данный момент
     private bool isAlive = true;
     private bool isAttackOn;
+
+
     // Метод Start загружает метод StartCoordinates из абстрактного класса NonPlayerCharacter
     // и начинает корутину StartMove
 
@@ -22,11 +28,7 @@ public class EnemyScript : NonPlayerCharacter
         StartCoordinates();
         StartCoroutine(StartMove());
     }
-
-    public int EnemyHealth()
-    {
-        return enemyHealth;
-    }
+   
     // В методе Update загружается метод Movement из класса NonPlayerCharacter
     // Метод Movement отвечает за плавное движение NPC к новым координатам
 
@@ -54,6 +56,12 @@ public class EnemyScript : NonPlayerCharacter
         }
     }
 
+    // Метод EnemyAttackAnimation отвечает за вызов анимации атаки врага
+    // При нажатии на левую кнопку мыши происходит назначение переменной bool isAttackOn = ture
+    // Добавляется корректирующий вектор для инстанциируемой анимации атаки
+    // Происходит Instantiate игрового объекта Attack - префаба, имеющего анимацию и коллайдер со свойствами триггера
+    // Спустя 0.3f этот игровой объект уничтожается
+    // Спустя 0.3f переменной bool isAttackOff присваивается значение false
     private void EnemyAttackAnimation()
     {
         isAttackOn = true;
@@ -64,6 +72,13 @@ public class EnemyScript : NonPlayerCharacter
         Invoke("AttackOff", 0.3f);
     }
 
+
+    // Метод AttackCountdown() нужен для вызова атаки спустя определённое количество времени (генерируется случайным образом)
+    // Из переменной attackCounter вычитается Time.deltaTime
+    // Если после этого переменная attackCounter больше или равна нулю, тогда вызывается метод instantiate атаки врага (EnemyAttackAnimation)
+    // Вызывается метод, изменяющий анимацию врага на анимацию атаки
+    // Рассчитывается новая величина attackCounter вызовом метода Random.Range
+    // Invoke возвращает статус переменной isAttackOn = false, отключает анимацию атаки
     private void AttackCountdown()
     {
         attackCounter -= Time.deltaTime;
@@ -76,6 +91,13 @@ public class EnemyScript : NonPlayerCharacter
             Invoke("npcAttackAnimationSetOff", 0.3f);
         }
     }
+
+    // Метод Collision триггер 
+    // Если происходит trigger collision с объектом, имеющим тег Player (в нашем случае, это вызываемая анимация атаки игрока с коллайдером)
+    // Тогда, вызывается скрипт DamageDealerScript этой атаки. Если нет скрипта, тогда коллижн завершается. 
+    // Если есть, тогда происходит вывод значения атаки вызовом метода из скрипта DamageDealerScript атаки GetDamage().ToString()
+    // Запускается корутина очистки текста 
+    // Значение атаки передаётся в метод EnemyDeath и метод PlayerDeath запускается.
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -88,14 +110,10 @@ public class EnemyScript : NonPlayerCharacter
             EnemyDeath(damageDealer);
         }
     }
-    private void AttackOff()
-    {
-        isAttackOn = false;
-    }
-    public bool IsAttackOn()
-    {
-        return isAttackOn;
-    }
+    // Метод EnemyDeath принимает значение damageDealer
+    // от здоровья игрока enemyHealth отнимается значение урона вражеской атаки путём вызова метода GetDamage()
+    // Запускается метод Hit(), происходит уничтожение instantiate объекта атаки игрока
+    // Если enemyHealth в результате нанесённого урона становится меньше или равно нулю, тогда запускается метод Die()
     private void EnemyDeath(DamageDealerScript damageDealer)
     {
         enemyHealth -= damageDealer.GetDamage();
@@ -105,20 +123,32 @@ public class EnemyScript : NonPlayerCharacter
             Die();
         }
     }
+
+    // Метод Die вызывается при смерти врага
+    // назначает переменной isAlive = false
+    // Выводит сообщение о смерти врага
+    // Запускает корутину очистки текстового поля урона
+    // Спустя 0.2f уничтожает врага
     private void Die()
     {
         isAlive = false;
         playerAttack.text = "DIED";
         StartCoroutine(textCleanCoroutine());
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, 0.2f);
 
     }
+
+    // Корутина очистки текста спустя 1f после запуска
     IEnumerator textCleanCoroutine()
     {
         yield return new WaitForSeconds(1f);
         playerAttack.text = "";
         StopCoroutine(textCleanCoroutine());
     }
+
+    // Метод npcAttackAnimation проверяет статус переменной isAttackOn вызовом метода IsAttackOn
+    // Если её статус true, тогда проверяется список булевых переменных аниматора врага
+    // В зависимости от направления движения вызывается анимация атаки врага
     private void npcAttackAnimation()
     {
         if (IsAttackOn() && npcAnimation.GetBool("IsWDown"))
@@ -162,6 +192,8 @@ public class EnemyScript : NonPlayerCharacter
             npcAnimation.Play("AttackAW");
         }
     }
+
+    // Статус атак во всех направлениях Off
     private void npcAttackAnimationSetOff()
     {
             npcAnimation.SetBool("AttackW", false);
@@ -172,5 +204,21 @@ public class EnemyScript : NonPlayerCharacter
             npcAnimation.SetBool("AttackSD", false);
             npcAnimation.SetBool("AttackAS", false);
             npcAnimation.SetBool("AttackAW", false);
+    }
+
+    // Метод передаёт значение уровня здоровья врага при вызове метода
+    public int EnemyHealth()
+    {
+        return enemyHealth;
+    }
+    // Внутренний метод, назначает статус переменной isAttackOn = false
+    private void AttackOff()
+    {
+        isAttackOn = false;
+    }
+    // Метод, необходимый для назначения правильной анимации атаки
+    public bool IsAttackOn()
+    {
+        return isAttackOn;
     }
 }
