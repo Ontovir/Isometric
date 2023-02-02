@@ -7,9 +7,12 @@ using UnityEngine;
 public class PlayerMoveAnimation : MonoBehaviour
 {
     // Создаю переменную класса Animator
+    // Переменная PlayerAttack knowAttackStatus нужна для вызова метода IsAttackOn
+    // Таким образом, проверяется статус атаки и при необходимости вызывается анимация атаки
     private Animator playerAnimator;
     private PlayerAttack knowAttackStatus;
-    // Присваиваю переменной значение
+
+    // Присваиваю переменным значения
     void Start()
     {
         knowAttackStatus = GetComponent<PlayerAttack>();
@@ -19,6 +22,7 @@ public class PlayerMoveAnimation : MonoBehaviour
     // В update вызываю метод MovementUpdate(), который
     // отвечает за обновление статуса анимации в зависимости
     // от нажатия клавиш управления, которые нажимает пользователь
+    // AttackUpdate отвечает за вызов анимации атаки в состоянии Idle
 
     // Update is called once per frame
     void Update()
@@ -29,6 +33,7 @@ public class PlayerMoveAnimation : MonoBehaviour
 
 
     // Группирующий метод, чтобы в Update много не пихать
+    // В конце вызывает метод, сбрасывающий булевы переменные анимации атаки в аниматоре
     private void MovementUpdate()
     {
         IfWDown();
@@ -43,6 +48,8 @@ public class PlayerMoveAnimation : MonoBehaviour
         Invoke("AttackAnimationOff", 0.1f);
     }
 
+    // Группирующий метод AttackUpdate вызывает анимации атаки в состоянии Idle
+    // В конце вызывает метод, сбрасывающий булевы переменные анимации атаки в аниматоре
     private void AttackUpdate()
     {
         IfDAttack();
@@ -60,6 +67,8 @@ public class PlayerMoveAnimation : MonoBehaviour
     // В зависимости от этого, они вызывают переменные bool из аниматора
     // и присваивают им значение. Если клавиша нажата - true,
     // если нет, тогда - false. Bool изменяют анимацию.
+    // для анимации атаки в движении происходит проверка статуса атаки вызовом метода IsAttackOn()
+    // если bool == true, тогда вызывается анимация атаки
     private void IfWDown()
     {
         if (Input.GetKey(KeyCode.W))
@@ -190,7 +199,7 @@ public class PlayerMoveAnimation : MonoBehaviour
         }
     }
 
-
+    //Группа методов, которые я использую для анимации атаки в состоянии idle
     //Attack Animation
     private void IfWDAttack()
     {
@@ -265,6 +274,7 @@ public class PlayerMoveAnimation : MonoBehaviour
         else playerAnimator.SetBool("AttackW", false);
     }
 
+    //отключение анимации атаки
     private void AttackAnimationOff()
     {
         playerAnimator.SetBool("AttackWD", false);
