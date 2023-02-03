@@ -10,7 +10,7 @@ public class LoadScore : MonoBehaviour
     void Start()
     {
         SaveScore stats = FindObjectOfType<SaveScore>();
-        score.text += stats.GetScore().ToString();
+        score.text = "Score: " + stats.GetScore().ToString();
     }
 
     // Update is called once per frame
