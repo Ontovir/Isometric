@@ -126,4 +126,9 @@ public class PlayerAttack : MonoBehaviour
         healthBarSlider.GetComponent<Slider>().value = playerHealth;
     }
 
+    // ¬озврат значени€ здоровь€ дл€ статистики
+    public int GetHealth()
+    {
+        return playerHealth;
+    }
 }

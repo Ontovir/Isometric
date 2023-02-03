@@ -15,9 +15,10 @@ public class EnemyScript : NonPlayerCharacter
     [SerializeField] TextMeshProUGUI playerAttack;
 
     // Ѕулевы переменные показывают статус врага. ∆ив он и атакует ли на данный момент
+    // StatisticsScript нужен дл€ подсчЄта убитых врагов
     private bool isAlive = true;
     private bool isAttackOn;
-
+    StatisticsScript stats;
 
     // ћетод Start загружает метод StartCoordinates из абстрактного класса NonPlayerCharacter
     // и начинает корутину StartMove
@@ -25,6 +26,7 @@ public class EnemyScript : NonPlayerCharacter
     // Start is called before the first frame update
     void Start()
     {
+        stats = FindObjectOfType<StatisticsScript>();
         StartCoordinates();
         StartCoroutine(StartMove());
     }
@@ -134,8 +136,8 @@ public class EnemyScript : NonPlayerCharacter
         isAlive = false;
         playerAttack.text = "DIED";
         StartCoroutine(textCleanCoroutine());
-        Destroy(gameObject, 0.2f);
-
+        Destroy(gameObject, 0.01f);
+        stats.ScoreUpdate();
     }
 
     //  орутина очистки текста спуст€ 1f после запуска

@@ -65,7 +65,7 @@ public class EnemyHealthBar : MonoBehaviour
         enemy = enemyObject.GetComponent<EnemyScript>();
         maxHealth = enemy.EnemyHealth();
         Debug.Log(maxHealth);
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y + (36f*Time.deltaTime));
+        Vector2 newPos = new Vector2(transform.position.x, transform.position.y + (24f*Time.deltaTime));
         transform.position = newPos;
     }
 }
