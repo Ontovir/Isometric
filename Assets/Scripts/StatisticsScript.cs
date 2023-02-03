@@ -57,7 +57,6 @@ public class StatisticsScript : MonoBehaviour
     {
         score++;
     }
-
     public int GetScore()
     {
         return score;

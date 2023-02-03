@@ -9,7 +9,7 @@ public class LoadScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StatisticsScript stats = FindObjectOfType<StatisticsScript>();
+        SaveScore stats = FindObjectOfType<SaveScore>();
         score.text += stats.GetScore().ToString();
     }
 
