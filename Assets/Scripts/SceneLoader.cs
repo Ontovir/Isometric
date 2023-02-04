@@ -7,10 +7,6 @@ public class SceneLoader : MonoBehaviour
 {
     int scene = 0;
 
-    private void Start()
-    {
-
-    }
 
     public void GetNewScene()
     {
@@ -19,6 +15,10 @@ public class SceneLoader : MonoBehaviour
     }
     public void EndGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

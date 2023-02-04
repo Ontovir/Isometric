@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject attackAnimation;
     [SerializeField] GameObject healthBarSlider;
     [SerializeField] TextMeshProUGUI enemyAttack;
+    SceneLoader sceneLoader;
 
     // Bool isAttackOn нужна для анимации атаки игрока в скрипте PlayerMoveAnimation. Вызывается методом bool IsAttackOn()
     private bool isAttackOn;
@@ -19,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneLoader = FindObjectOfType<SceneLoader>();
         PlayerMaxHealthInitialize();
     }
 
@@ -102,6 +104,7 @@ public class PlayerAttack : MonoBehaviour
     {
         GetComponent<PlayerController>().enabled = false;
         enemyAttack.text = "DIED";
+        sceneLoader.EndGame();
         StartCoroutine(textCleanCoroutine());
         Destroy(gameObject, 1f);
     }
