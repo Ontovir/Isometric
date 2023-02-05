@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
+    // Скрипт, отвечающий за переход между сценами
     int scene = 0;
-
-
     public void GetNewScene()
     {
         scene++;
