@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerAttackAnimation();
+        //PlayerAttackAnimation();
         PlayerHealthUpdate();
     }
 
@@ -37,16 +37,16 @@ public class PlayerAttack : MonoBehaviour
     // Происходит Instantiate игрового объекта Attack - префаба, имеющего анимацию и коллайдер со свойствами триггера
     // Спустя 0.3f этот игровой объект уничтожается
     // Спустя 0.2f переменной bool isAttackOff присваивается значение false
-    private void PlayerAttackAnimation()
+    public void PlayerAttackAnimation()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        //if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             isAttackOn = true;
             Vector3 corrVec = new Vector3 (0.1f, 0.1f, 0f);
             GameObject attack = Instantiate
                 (attackAnimation, transform.position-corrVec, Quaternion.identity);
             Destroy(attack, 0.3f);
-            Invoke("AttackOff", 0.2f);
+            Invoke("AttackOff", 0.1f);
         }
     }
 

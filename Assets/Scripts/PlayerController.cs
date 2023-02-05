@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(LoadNextScene());
         }
     }
+    // Корутина запускается при коллижне персонажа с триггер-зоной
+    // Отвечает за переход к конечной сцене
     IEnumerator LoadNextScene()
     {
         yield return new WaitForSeconds(1f);
@@ -60,6 +62,7 @@ public class PlayerController : MonoBehaviour
         StopCoroutine(LoadNextScene());
     }
 
+    // Метод возвращает значение скорости передвижения персонажа в UI
     public float GetSpeed()
     {
         return playerSpeed;

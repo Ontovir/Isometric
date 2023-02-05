@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SaveScore : MonoBehaviour
 {
+    // Скрипт, который сохраняет результат боя
+    // Используется для переноса информации о полученных очках в следующую сцену
     int score;
     StatisticsScript scoreStats;
     // Start is called before the first frame update

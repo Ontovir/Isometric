@@ -59,13 +59,13 @@ public class EnemyHealthBar : MonoBehaviour
     // Переменной EnemyScript enemy присваивается значение EnemyScript из привязанного в SerializeField игрового объекта врага
     // Переменной maxHealth присваивается значение здоровья из скрипта enemy методом EnemyHealth()
     // Дебаг в тестовых целях, для проверки
-    // Vector2 newPos нужен для правильного позиционирования HealthBar над моделькой врага
+    // Vector3 newPos нужен для правильного позиционирования HealthBar над моделькой врага
     private void AddHealthBarScale()
     {
         enemy = enemyObject.GetComponent<EnemyScript>();
         maxHealth = enemy.EnemyHealth();
         Debug.Log(maxHealth);
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y + (24f*Time.deltaTime));
-        transform.position = newPos;
+        Vector3 newPos = new Vector3(0f, 30f, 0f);
+        transform.position = enemyObject.transform.position + newPos*Time.deltaTime;
     }
 }
