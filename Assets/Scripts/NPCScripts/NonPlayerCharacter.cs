@@ -67,9 +67,9 @@ public abstract class NonPlayerCharacter : MonoBehaviour
         // Потом создаём вектор, имеющий новые координаты, основанные на стартовой позиции NPC
         // Берём RigidBody2D нашего NPC и двигаем с помощью метода Vector3.MoveTowards на новую позицию 
 
-        float moveSpeed = npcMoveSpeed * Time.deltaTime;
+        float moveSpeed = npcMoveSpeed;
         Vector3 moveVector = new Vector3(xStartPosition + xMoveRandom, yStartPosition + yMoveRandom, 0f);
-        GetComponent<Rigidbody2D>().transform.position = Vector3.MoveTowards(transform.position, moveVector, moveSpeed);
+        GetComponent<Rigidbody2D>().transform.position = Vector3.MoveTowards(transform.position, moveVector, moveSpeed*Time.deltaTime);
     }
 
 

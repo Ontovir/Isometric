@@ -15,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - PlayerMinimap
+  - EnemyMinimap
+  - UserMinimap
   - 
   - 
   - 
