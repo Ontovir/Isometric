@@ -198,6 +198,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5597097162036633501, guid: d192309e1cd9bfa4a849c00d9cdbe903, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597097162036633501, guid: d192309e1cd9bfa4a849c00d9cdbe903, type: 3}
+      propertyPath: m_Color.g
+      value: 0.745566
+      objectReference: {fileID: 0}
+    - target: {fileID: 5597097162036633501, guid: d192309e1cd9bfa4a849c00d9cdbe903, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5896226
+      objectReference: {fileID: 0}
     - target: {fileID: 5597097162178680352, guid: d192309e1cd9bfa4a849c00d9cdbe903, type: 3}
       propertyPath: m_Name
       value: Background
@@ -542,6 +554,22 @@ PrefabInstance:
       propertyPath: m_text
       value: RESTART
       objectReference: {fileID: 0}
+    - target: {fileID: 7372953677059136451, guid: d2102a36761a04f48b257656a971745e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.08962262
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372953677059136451, guid: d2102a36761a04f48b257656a971745e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.583969
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372953677059136451, guid: d2102a36761a04f48b257656a971745e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372953677059136451, guid: d2102a36761a04f48b257656a971745e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4279735807
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2102a36761a04f48b257656a971745e, type: 3}
 --- !u!224 &1434105524 stripped
@@ -617,8 +645,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4282887167
+  m_fontColor: {r: 1, g: 0.6723136, b: 0.27843142, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -801,7 +829,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 5, y: -342}
+  m_AnchoredPosition: {x: 5, y: -248}
   m_SizeDelta: {x: 405.4931, y: 378}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050773114
@@ -826,15 +854,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: WIN!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-  m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278200831
-  m_fontColor: {r: 1, g: 0.15976928, b: 0, a: 1}
+    rgba: 4282754047
+  m_fontColor: {r: 1, g: 0.63917106, b: 0.27058828, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
