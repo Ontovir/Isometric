@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23bd827ccac41b2468562489948446ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 2000
+  playerHealth: 500
   attackAnimation: {fileID: 2753509855677015047, guid: 6f8f84f2f7b5eb64fafa3064cd2aa515, type: 3}
   healthBarSlider: {fileID: 1223924751}
   enemyAttack: {fileID: 1433859643}
@@ -11495,7 +11495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130538096940, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: playerSpeed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4449477130538096941, guid: 67733eff765f69845b438df1f84702f9, type: 3}
       propertyPath: m_RootOrder
@@ -34306,6 +34306,18 @@ PrefabInstance:
     - target: {fileID: 4991136833745543973, guid: f5909c8da22034648832bbfee941d157, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991136834396417972, guid: f5909c8da22034648832bbfee941d157, type: 3}
+      propertyPath: m_Color.b
+      value: 0.06805542
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991136834396417972, guid: f5909c8da22034648832bbfee941d157, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 4991136834396417972, guid: f5909c8da22034648832bbfee941d157, type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4991136834396417973, guid: f5909c8da22034648832bbfee941d157, type: 3}
       propertyPath: m_AnchorMax.y

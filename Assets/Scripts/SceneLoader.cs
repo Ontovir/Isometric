@@ -18,7 +18,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(3);
     }
     public void RestartGame()
-    {
+    { 
         SceneManager.LoadScene(0);
     }
 
