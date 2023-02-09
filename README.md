@@ -19,4 +19,6 @@ https://user-images.githubusercontent.com/120922587/214326276-5dcb7a76-a539-4cc8
 https://user-images.githubusercontent.com/120922587/214326763-c6ef394d-cc62-4e0f-b0f3-993b9e269449.mp4
 #### №4. Добавлена возможность нанесения урона, анимации атаки.
 https://user-images.githubusercontent.com/120922587/216385093-394ccdd1-53e2-4928-b540-9e9ddf3a052f.mp4
+#### №5. Добавлен интерфейс, начальная и конечные сцены.
+https://user-images.githubusercontent.com/120922587/217868119-eae85d01-58b8-4fad-bfd2-5532766858a9.mp4
 
